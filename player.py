@@ -26,4 +26,7 @@ class Player(CircleShape):
             self.rotate(-dt)
         if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.rotate(dt)
+        if keys[pygame.K_ESCAPE]:
+            pygame.quit()
+            exit()
         
