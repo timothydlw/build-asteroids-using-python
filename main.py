@@ -8,6 +8,10 @@ from asteroid import Asteroid
 
 from asteroidfield import *
 
+from circleshape import CircleShape
+
+import sys
+
 updatable = pygame.sprite.Group() #all the objects that can be updated
 
 drawable = pygame.sprite.Group() #all the objects that can be drawn
@@ -34,10 +38,15 @@ def main():
         screen.fill((0, 0, 0))
 
         updatable.update(dt)
-        for player in drawable:
-            player.draw(screen)
+        for obj in drawable:
+            obj.draw(screen)
         
-        
+        for asteroid in asteroids:
+            if player.collides_with(asteroid) == True:
+                print("Game over!")
+                pygame.quit()
+                sys.exit()
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000.0
     print(f"Starting Asteroids!\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
