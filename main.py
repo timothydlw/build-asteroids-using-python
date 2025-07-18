@@ -12,6 +12,8 @@ from circleshape import CircleShape
 
 import sys
 
+from shot import Shot
+
 updatable = pygame.sprite.Group() #all the objects that can be updated
 
 drawable = pygame.sprite.Group() #all the objects that can be drawn
@@ -20,7 +22,9 @@ Player.containers = (updatable, drawable)
 
 def main():
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     Asteroid.containers = (asteroids, updatable, drawable)
+    Shot.containers = (shots, updatable, drawable)
     AsteroidField.containers = (updatable)
     pygame.init()
     clock = pygame.time.Clock()
